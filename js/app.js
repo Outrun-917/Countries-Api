@@ -64,13 +64,17 @@ function createCountryCard(countries) {
   });
 }
 
+function searchCountry(countries) {
+
+}
+
 fetch(
   "https://restcountries.com/v3.1/all?fields=name,flags,region,capital,population"
 )
   .then((res) => {
     return res.json();
   })
-  .then(function (data) {
+  .then((data) => {
     countries = data;
 
     createCountryCard(countries);
@@ -90,6 +94,8 @@ fetch(
       }
     });
 
-    
+    $searchInput.addEventListener("input", () => {
+        searchCountry(countries)
+    });
   })
   .catch((err) => console.log("Une erreure est survenue", err));
